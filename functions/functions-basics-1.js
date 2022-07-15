@@ -48,3 +48,11 @@ function sum(x, y) {
 }
 
 console.log(`Sum(14, 6) : ${sum(14, 6)}`);
+
+
+function square(x) {
+  return x * x;
+}
+
+console.log(`Square(10) : ${square(10)}`);
+
