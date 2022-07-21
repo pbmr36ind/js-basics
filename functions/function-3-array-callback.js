@@ -373,6 +373,7 @@ console.log(sortedBooks);
 
 // REDUCE Method -
 
+/*
 const prices = [3, 5, 6, 7, 8];
 
 const sumPrices = prices.reduce((accumulator, currValue) => {
@@ -380,3 +381,63 @@ const sumPrices = prices.reduce((accumulator, currValue) => {
 });
 
 console.log(sumPrices);
+
+*/
+
+/*
+
+const prices = [40.96, 20.21, 9.87, 55.65, 99.34, 36.22, 2.5];
+
+const maxPrice = prices.reduce((maxPrice, currPrice) => {
+  return Math.max(maxPrice, currPrice);
+});
+
+console.log(maxPrice);
+
+const minPrice = prices.reduce((minPrice, currPrice) => {
+  return Math.min(minPrice, currPrice);
+});
+
+console.log(minPrice);
+
+*/
+
+/*
+
+const prices = [1, 2, 4, 5];
+
+const sumPrices = prices.reduce((total, currPrice) => {
+  return total + currPrice;
+}, 20);
+
+console.log(prices);
+
+console.log(sumPrices);
+
+
+*/
+
+// Use REDUCE method to tally
+
+const votes = ["y", "y", "n", "y", "n", "nota", "absent"];
+
+/*
+const results = votes.reduce((tally, vote) => {
+  if (tally[vote]) {
+    tally[vote]++;
+  } else {
+    tally[vote] = 1;
+  }
+
+  return tally;
+}, {});
+
+*/
+
+const results = votes.reduce((tally, vote) => {
+  tally[vote] = (tally[vote] || 0) + 1;
+
+  return tally;
+}, {});
+
+console.log(results);
