@@ -1,4 +1,3 @@
-
 // Misc Features of JS
 
 // Default param values
@@ -35,7 +34,7 @@ console.log(multiply(4));
 
 */
 
-// greeting function with default parameter 
+// greeting function with default parameter
 /*
 const greet = (name, greeting="Welcome") => {
   
@@ -61,7 +60,7 @@ blah();
 
 // SPREAD
 
-// # 1 : SPREAD in function calls 
+// # 1 : SPREAD in function calls
 
 /*
 
@@ -92,7 +91,6 @@ giveMeFour(...str1);
 
 */
 
-
 // # 2 : SPREAD in Array Literals.
 
 /*
@@ -119,6 +117,7 @@ console.log(str1Array);
 
 // # 3 : SPREAD in Objects.
 
+/*
 const car1 = {
   name  : "Camry",
   brand : "Toyota",
@@ -144,4 +143,160 @@ const carsArr = [...cars, {..."pr"} ];
 
 console.log(carsArr);
 
+*/
 
+// REST
+
+/*
+function sum() {
+  const argsArray = [...arguments];
+
+  return argsArray.reduce((total, currVal) => {
+    return total + currVal;
+  });
+}
+
+console.log(sum(1, 2, 3, 4, 5, 6));
+
+*/
+
+/*function printFullName(fname, lname) {
+  console.log("Arguments : ", arguments);
+}*/
+
+/*
+const printFullName = (fname, lname) => {
+  console.log("Arguments : ", arguments);
+};
+
+console.log(printFullName("Bill", "Watts", ["III", "Jr.", "Sr."]));
+*/
+
+// REST Operator
+
+/*
+function sum(...nums) {
+  return nums.reduce((total, currVal) => {
+    return total + currVal;
+  });
+}
+
+console.log(sum(1, 2, 3, 4, 5, 6));
+*/
+
+/*
+
+const printFullName = (fname, lname, ...titles, location) => {
+  console.log("fname : ", fname);
+  console.log("lname : ", lname);
+  console.log("Titles : ", ...titles);
+  console.log("Location : ", location);
+};
+
+
+console.log(printFullName("Bill", "Watts", "III", "Jr.", "Sr."));
+*/
+
+// DESTRUCTURING
+
+const students = ["Ram", "Babu", "Kumar", "Jai", "Siva", "Veera"];
+
+/*
+const [first, second, third] = students;
+
+console.log("first : ", first);
+console.log("second : ", second);
+console.log("third : ", third);
+
+*/
+
+/*
+const [, first, , second, , third] = students;
+
+const [, , , , fourth] = students;
+
+console.log("first : ", first);
+console.log("second : ", second);
+console.log("third : ", third);
+console.log("fourth : ", fourth);
+*/
+
+/*
+const [, first, ...others] = students;
+
+console.log("first : ", first);
+console.log("others : ", others);
+
+*/
+
+/*
+const books = [
+  {
+    book: "Mithavai",
+    author: "Nanjil Nadan",
+    language: "Tamil",
+    tags: ["non-fiction", "life", "bombay"],
+  },
+  {
+    book: "Rubber",
+    author: "Jeyamohan",
+    language: "Tamil",
+    tags: ["non-fiction", "life", "plantation"],
+  },
+];
+
+
+const { book: novel, language: script, ...otherAttrs } = books[0];
+
+console.log("novel : ", novel);
+console.log("script: ", script);
+console.log("otherAttrs: ", otherAttrs);
+
+*/
+
+// Nested Destructuring -
+
+/*
+
+const [{ book }, { tags }] = books;
+
+console.log("book name of first : ", book);
+
+console.log("Tags of second book : ", tags);
+
+*/
+
+// DESTRUCTURING in function param
+
+const books = [
+  {
+    book: "Mithavai",
+    author: "Nanjil Nadan",
+    language: "Tamil",
+    tags: ["non-fiction", "bombay"],
+  },
+  {
+    book: "Rubber",
+    author: "Jeyamohan",
+    language: "Tamil",
+    tags: ["non-fiction", "plantation"],
+  },
+  {
+    book: "Vazhkai Oru Nadagam",
+    author: "Pannalal Patel",
+    language: "Gujarati",
+    tags: ["non-fiction", "freedom"],
+  },
+];
+
+const printAuthorLanguage = books.map(({ author, language }) => {
+  return ` ${author} speaks ${language} `;
+});
+
+/*
+const printAuthorLanguage = ({ author, language }) => {
+  return ` ${author} speaks ${language} `;
+};
+*/
+
+console.log(printAuthorLanguage);
