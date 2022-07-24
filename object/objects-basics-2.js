@@ -194,8 +194,24 @@ const person = {
   nickName: "bheem",
   fullName() {
     const { fname, lname, nickName } = this; // destructure this
-    return `${lname}, ${fname} aka ${nickName}`;
+    return `${lname}, ${fname} aka. ${nickName}`;
+  },
+  printBio() {
+    console.log(this);
+    const fullName = this.fullName();
+    console.log(`BIO : ${fullName} is a person !!! `);
+  },
+  laugh: () => {
+    console.log(this);
+    console.log(`${this.nickName} says HA HA HA HA HA !!!! `);
   },
 };
 
-console.log("Full Name :", person.fullName());
+/*
+const printBio = person.printBio;
+
+printBio();
+*/
+
+// arrow function
+person.laugh();
