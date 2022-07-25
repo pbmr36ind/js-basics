@@ -188,6 +188,8 @@ const person = {
 };
 */
 
+/*
+
 const person = {
   fname: "praveen",
   lname: "babu",
@@ -201,12 +203,12 @@ const person = {
     const fullName = this.fullName();
     console.log(`BIO : ${fullName} is a person !!! `);
   },
-  laugh: () => {
+  laugh() {
     console.log(this);
     console.log(`${this.nickName} says HA HA HA HA HA !!!! `);
   },
 };
-
+*/
 /*
 const printBio = person.printBio;
 
@@ -214,4 +216,36 @@ printBio();
 */
 
 // arrow function
-person.laugh();
+//person.laugh();
+
+// Annoyomatc Demo - to understand this inside object & setInterval & arrow function.
+
+const annoyer = {
+  phrases: ["Yov", "Vaya", "Poya", "Venna", "literally", "stop"],
+
+  pickPhrase() {
+    // destructure - get phrases from this object
+    const { phrases } = this;
+    //get random idx for phrase selection
+    const idx = Math.floor(Math.random() * phrases.length);
+    return phrases[idx];
+  },
+
+  // regular function in shorthand
+  start() {
+    //console.log(this);
+    let that = this;
+    //save the id to stop it later
+    this.timerId = setInterval(() => {
+      // to see whats the value of this
+      //console.log("this:", this);
+      //console.log("that:", that);
+      console.log(this.pickPhrase());
+    }, 2000);
+  },
+
+  stop() {
+    console.log(this.timerId);
+    clearInterval(this.timerId);
+  },
+};
