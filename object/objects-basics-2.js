@@ -219,7 +219,7 @@ printBio();
 //person.laugh();
 
 // Annoyomatc Demo - to understand this inside object & setInterval & arrow function.
-
+/*
 const annoyer = {
   phrases: ["Yov", "Vaya", "Poya", "Venna", "literally", "stop"],
 
@@ -249,3 +249,192 @@ const annoyer = {
     clearInterval(this.timerId);
   },
 };
+
+*/
+
+// DECK of Cards 
+
+/*
+// makedeck() using regular functions 
+
+function makeDeck() {
+  // Symbols & Numbers
+  const symbols = ['hearts', 'diamonds', 'spades', 'clubs'];
+  const values = "A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K";
+
+  //output deck
+  const deck = [];
+
+  //loop values
+  for(let symbol of symbols) {
+
+    // loop symbols
+    for(let value of values.split(",")) {
+
+      deck.push( {value, symbol } );
+
+    }
+
+  }
+
+  // return deck
+  return deck;
+}
+
+// draw the top card 
+function drawCard(deck) {
+  return deck.pop();
+}
+
+const myDeck = makeDeck();
+const card1 = drawCard(myDeck);
+*/
+
+
+// Deck using objects 
+
+/*
+
+const myDeck = {
+
+  deck : [],
+
+  // Symbols & Numbers
+  symbols : ['hearts', 'diamonds', 'spades', 'clubs'],
+  values : "A,2,3,4,5,6,7,8,9,10,J,Q,K",
+
+  initialize() {
+
+    //loop values
+    for(let symbol of this.symbols) {
+
+      // loop symbols
+      for(let value of this.values.split(",")) {
+          this.deck.push( {value, symbol } );
+      }
+    }
+  },
+
+  drawnCards : [],
+
+  // draw one card at the top - 
+  drawCard() {
+    const card = this.deck.pop();
+    this.drawnCards.push(card);
+    return card;
+  },
+
+  // draw multiple cards
+  drawMultipleCards(nums) {
+
+    const mulCards = [];
+
+    for(let i=0; i<nums; i++) {
+      const card = this.drawCard();
+      mulCards.push(card);
+      this.drawnCards.push(card);
+    }
+
+    return mulCards;
+
+  },
+
+  shuffleDeck() {
+
+    for(let i = this.deck.length-1 ; i >= 0; i-- ) {
+
+      // random index
+      const randomIdx = Math.floor(Math.random() * this.deck.length);
+
+      //swap
+      [this.deck[i], this.deck[randomIdx]] = [this.deck[randomIdx], this.deck[i]];
+    }
+
+    return this.deck;
+
+  }
+
+}
+
+myDeck.initialize();
+
+*/
+
+
+// Create a DECK factory using a function 
+
+const makeDeck = () => {
+
+  // return an object
+  return {
+
+    // copied from above object
+    deck : [],
+
+    // Symbols & Numbers
+    symbols : ['hearts', 'diamonds', 'spades', 'clubs'],
+    values : "A,2,3,4,5,6,7,8,9,10,J,Q,K",
+
+    initialize() {
+
+      //loop values
+      for(let symbol of this.symbols) {
+
+        // loop symbols
+        for(let value of this.values.split(",")) {
+            this.deck.push( {value, symbol } );
+        }
+      }
+    },
+
+    drawnCards : [],
+
+    // draw one card at the top - 
+    drawCard() {
+      const card = this.deck.pop();
+      this.drawnCards.push(card);
+      return card;
+    },
+
+    // draw multiple cards
+    drawMultipleCards(nums) {
+
+      const mulCards = [];
+
+      for(let i=0; i<nums; i++) {
+        const card = this.drawCard();
+        mulCards.push(card);
+        this.drawnCards.push(card);
+      }
+
+      return mulCards;
+
+    },
+
+    shuffleDeck() {
+
+      for(let i = this.deck.length-1 ; i >= 0; i-- ) {
+        // random index
+        const randomIdx = Math.floor(Math.random() * this.deck.length);
+        //swap
+        [this.deck[i], this.deck[randomIdx]] = [this.deck[randomIdx], this.deck[i]];
+      }
+
+      return this.deck;
+    }
+
+  }
+
+}
+
+const deck1 = makeDeck();
+deck1.initialize();
+deck1.shuffleDeck();
+const cardsFromDeck1 = deck1.drawMultipleCards(2);
+console.log(cardsFromDeck1);
+
+const deck2 = makeDeck();
+deck2.initialize();
+deck2.shuffleDeck();
+const cardsFromDeck2 = deck2.drawMultipleCards(5);
+console.log(cardsFromDeck2);
