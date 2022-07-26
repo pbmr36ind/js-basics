@@ -1,0 +1,21 @@
+body {
+    background-color: #b3c0f0;
+}
+
+img {
+    width : 50%;
+}
+
+.special {
+    color: teal;
+}
+
+header { 
+    margin : auto;
+    text-align: center;
+}
+
+.mainDiv{
+    max-width : 600px;
+    margin : 0 auto;
+}
