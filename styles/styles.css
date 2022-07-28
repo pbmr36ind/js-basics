@@ -1,21 +1,43 @@
 body {
-    background-color: #b3c0f0;
+  background-color: #b3c0f0;
 }
 
 img {
-    width : 50%;
+  width: 50%;
 }
 
 .special {
-    color: teal;
+  color: teal;
 }
 
-header { 
-    margin : auto;
-    text-align: center;
+header {
+  margin: auto;
+  text-align: center;
 }
 
-.mainDiv{
-    max-width : 600px;
-    margin : 0 auto;
+.mainDiv {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: red;
+}
+
+h1:hover {
+  color: teal;
+  font-size: 45px;
+}
+
+.todo {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  color: olive;
+}
+
+.done {
+  color: gray;
+  text-decoration: line-through;
+  opacity: 50%;
+  font-size: 50px;
 }

@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS DOM - 1</title>
     <link rel="stylesheet" href="styles/styles.css" />
-    <script src="dom/dom-basics-1.js"></script>
+    
   </head>
   <body>
     <header>
-      <h1>My WebPage</h1>
-      <p id="p0">My webpage - DOM Manipulation</p>
+      <h1>My WebPage - DOM Examples </h1>
+      <p id="p0">Created for understanding DOM</p>
     </header>
 
     <div class="mainDiv">
+
+      <ul id="todos">
+        <li class="todo">Mow the lawn</li>
+        <li class="todo">Build the fence</li>
+        <li class="todo">Clean the car</li>
+      </ul>
+
       <p id="p1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
@@ -24,9 +31,11 @@
         <i style="display: none">imperdiet vitae aliquam mauris,</i> faucibus
         mauris semper eu. Quisque varius lacus nec egestas imperdiet. Ut
         pharetra maximus nunc vel facilisis.
+        <!--
         <script>
           console.log("Hello Everyone !!!");
         </script>
+        -->
         Donec nec tortor vel odio accumsan rutrum eu ut tortor. Vivamus mattis
         ligula tempus felis tempus blandit.
       </p>
@@ -46,20 +55,41 @@
           <li class="special">Apple</li>
           <li class="special">Peach</li>
         </ol>
+
+        <label>Veggies : </label>
+        <ol> 
+          <li class="special">Brocolli</li>
+          <li class="special">Beans</li>
+          <li class="special">Carrot</li>
+        </ol>
+
+      </fieldset>
+
+      <a href="https://www.unsplash.com/cats.jpg"> Test Link </a>
+      <fieldset>
+        <form>
+          <input type="text" placeholder="Cloud Name" />
+          <br>
+          <input type="text" placeholder="Cloud Pattern" />
+          <br>
+          Wind Speed : <input type="range" min="100" max="500"/>
+          <br>
+          <span>
+            <label>Season :</label>
+            <input type="checkbox" name="season" value="summer">Summer</input>
+            <input type="checkbox" name="season" value="winter">Winter</input>
+            <input type="checkbox" name="season" value="Fall">Fall</input>
+            <input type="checkbox" name="season" value="Spring">Spring</input>
+          </span>
+          <br>
+          <input type="submit" />
+        </form>
       </fieldset>
 
       <img
         id="sky-photo"
         src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
       />
-
-      <fieldset>
-        <form>
-          <input type="text" placeholder="Cloud Name" />
-          <input type="password" placeholder="password" />
-          <input type="submit" />
-        </form>
-      </fieldset>
 
       <p id="p2">
         Morbi dapibus tempor enim, aliquam egestas diam ullamcorper ut. Donec
@@ -68,5 +98,8 @@
         viverra odio lacus, vel aliquet velit semper ut
       </p>
     </div>
+
+    <script src="dom/dom-basics-1.js"></script>
+
   </body>
 </html>
