@@ -69,3 +69,116 @@ console.log("todo_1 class : ", todo_1_class);
 // Create new elements using createElement and adding it to other elements
 
 // some of the code example are executed in console window - screenshots in notes.
+
+// Append / Prepend & insertBefore -
+
+/*
+//append
+
+function appendElement() {
+  // unordered list -
+  const ul = document.querySelector("ul");
+
+  // create a new element
+  const li_new = document.createElement("li");
+
+  li_new.innerHTML = "Buy Groceries";
+  li_new.classList.toggle("todo");
+
+  ul.append(li_new);
+}
+
+*/
+
+//insertBefore
+
+/*
+function insertElement() {
+  // unordered list -
+  const parent_ul = document.querySelector("ul");
+
+  // select the element before which new element needs to be inserted
+  const first_li = document.querySelector("ul li");
+
+  // create new element
+  const li_new = document.createElement("li");
+
+  li_new.innerHTML = "Buy Groceries";
+  li_new.classList.toggle("todo");
+
+  // now insert
+  parent_ul.insertBefore(li_new, first_li);
+}
+*/
+
+//insertAdjacentElement -- beforeBegin / afterBegin / beforeEnd / afterEnd
+
+/*
+function insertAdjElem() {
+  const para1 = document.querySelector("p");
+
+  // create new element
+  const italics_1 = document.createElement("i");
+
+  italics_1.innerText = "This is your barcode.";
+  italics_1.style = "color: teal; font-size: 35px";
+
+  para1.insertAdjacentElement("beforeend", italics_1);
+}
+
+*/
+
+// append & prepend
+
+/*
+function appendFunc() {
+  const para1 = document.querySelector("p");
+  const italics_1 = document.createElement("i");
+
+  italics_1.innerText = "This is your barcode.";
+  italics_1.style = "color: teal; font-size: 35px";
+
+  para1.append(italics_1);
+}
+*/
+
+// prepend
+/*
+function prependFunc() {
+  const para1 = document.querySelector("p");
+  const italics_1 = document.createElement("i");
+
+  italics_1.innerText = "This is your barcode.";
+  italics_1.style = "color: teal; font-size: 35px";
+
+  para1.prepend(italics_1);
+}
+
+*/
+
+// removeChild() & remove
+
+// remove the p tag from header -
+/*
+function removeChildFunc() {
+  // find header
+  const header1 = document.querySelector("header");
+
+  // find p tag inside header
+  const para1 = header1.querySelector("p");
+
+  // remove para from header
+  return header1.removeChild(para1);
+}
+
+*/
+
+// remove the element being called -
+
+function removeFunc() {
+  // find p tag inside header
+  const para1 = document.querySelector("header p");
+
+  // remove the element
+  para1.remove();
+}
