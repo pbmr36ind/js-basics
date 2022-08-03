@@ -13,27 +13,51 @@ function isTouching(a, b) {
 //player object
 const player = document.querySelector("#player");
 
+//coin object
+const coin = document.querySelector("#coin");
+
+// extract number from text with px ex: 10px
 function extractPos(posStr) {
-  if (!posStr) return 0;
-  console.log("left pos str:", posStr);
+  if (!posStr) 
+    return 0;
+
   return parseInt(posStr.slice(0, -2));
 }
 
-console.log("player:", player.style.left);
+// move the coin pos random
+function moveCoin(){
+  const x = Math.floor(Math.random() * window.innerWidth - 10);
+  const y = Math.floor(Math.random() * window.innerHeight - 10);
+  coin.style.top = `${y}px`;
+  coin.style.left = `${x}px`;
+} 
+
+
+moveCoin();
 
 //track key press events
 
 window.addEventListener("keyup", function (evt) {
-  //print the key pressed
-  console.log("evt:", evt.key);
 
   let leftPos = extractPos(player.style.left);
-
-  console.log(leftPos);
-
-  if ((evt.key = "ArrowRight")) {
-    player.style.left = `${leftPos + 10}px`;
-  } else if ((evt.key = "ArrowLeft")) {
-    player.style.left -= 10;
+  let topPos = extractPos(player.style.top);
+  
+  if ( evt.key === "ArrowRight"  || evt.key === "Right" ) {
+    player.style.transform = 'scale(1, 1)';
+    player.style.left = `${leftPos + 25}px`;
+  } else if ( evt.key === "ArrowLeft" || evt.key === "Left"  ) {
+    // change the image direction to left
+    player.style.transform = 'scale(-1, 1)';
+    player.style.left =`${leftPos - 25}px`;
+  } else if ( evt.key === "ArrowDown" || evt.key === "Down") {
+    player.style.top =`${topPos + 25}px`;
+  } else if ( evt.key === "ArrowUp" || evt.key === "Up") {
+    player.style.top =`${topPos - 25}px`;
   }
+
+  // move the coin when the player touches the coin.
+  if( isTouching(player, coin) ) {
+    moveCoin();
+  }
+
 });
