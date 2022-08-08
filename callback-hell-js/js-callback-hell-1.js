@@ -1,4 +1,6 @@
 
+//Callback - hell
+
 //const btn1 = document.querySelector('button');
 
 /*
@@ -22,6 +24,23 @@ setTimeout( ()=> {
     }, 1000);
 
 }, 1000);
+*/
+
+/*
+// call function with another function to callback. 
+moveRight(btn1, 100, 1000, ()=>{
+    moveRight(btn1, 100, 1000, ()=>{
+        moveRight(btn1, 200, 1000, ()=> {
+            moveRight(btn1, 200, 1000);
+        });
+    });
+});
+
+*/
+
+
+/*
+ * Move buttons using two call back functions (one for success and one for failure). 
 */
 
 const btn1 = document.querySelector('button');
@@ -59,7 +78,18 @@ moveRight(btn1, 100, 1000, ()=>{
     //success
     moveRight(btn1, 100, 1000, ()=>{
         //success
-        moveRight(btn1, 100, 1000);
+        moveRight(btn1, 100, 1000, ()=>{
+            // success
+            moveRight(btn1, 100, 1000, ()=>{
+                //success
+            }, ()=>{
+                //failure
+                console.log("Reached End");
+            })
+        }, ()=>{
+            // failure
+            console.log("Reached End");
+        });
 
     }, ()=>{
         // failure
@@ -71,14 +101,5 @@ moveRight(btn1, 100, 1000, ()=>{
     console.log("Reached End");
 })
 
-/*
-// call function with another function to callback. 
-moveRight(btn1, 100, 1000, ()=>{
-    moveRight(btn1, 100, 1000, ()=>{
-        moveRight(btn1, 200, 1000, ()=> {
-            moveRight(btn1, 200, 1000);
-        });
-    });
-});
 
-*/
+// the above code is callback hell.
