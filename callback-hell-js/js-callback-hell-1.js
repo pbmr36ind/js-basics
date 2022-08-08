@@ -43,6 +43,7 @@ moveRight(btn1, 100, 1000, ()=>{
  * Move buttons using two call back functions (one for success and one for failure). 
 */
 
+/*
 const btn1 = document.querySelector('button');
 
 // alternate way to move the button. 
@@ -102,4 +103,46 @@ moveRight(btn1, 100, 1000, ()=>{
 })
 
 
-// the above code is callback hell.
+// the above code is a sample for callback hell.
+
+*/
+
+// Improve using Chaining of Promises
+
+const moveRight = (element, numOfPx, delay) => {
+
+    return new Promise( (resolve, reject) => {
+
+        setTimeout( () => {
+            const screenBoundary = document.body.clientWidth;
+
+            const elmLeft = element.getBoundingClientRect().left;
+            const elmRight = element.getBoundingClientRect().right;
+    
+            if( (elmRight + numOfPx) > screenBoundary) {
+    
+                reject();
+        
+            } else {
+                console.log('Move Right');
+                element.style.transform = `translateX(${elmLeft + numOfPx}px)`;
+                resolve();
+            }
+        }, delay) 
+
+    })
+}
+
+//element to move 
+const btn1 = document.querySelector('button');
+
+moveRight(btn1, 100, 1000)
+.then( () =>  moveRight(btn1, 100, 1000))
+.then( () =>  moveRight(btn1, 100, 1000))
+.then( () =>  moveRight(btn1, 100, 1000))
+.then( () =>  moveRight(btn1, 100, 1000))
+.then( () =>  moveRight(btn1, 100, 1000))
+.catch( () => {
+    // failure
+    console.log("Reached End");
+})

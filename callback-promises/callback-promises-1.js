@@ -274,7 +274,7 @@ bookRequest('/books').then( (res) => {
     console.log(`Review Id : ${res.data.reviewId} `);
 
     const reviewId = res.reviewId;
-    return bookRequest(`/review/${res.data.reviewId}`);
+    return bookRequest(`/reviewsforyou/${res.data.reviewId}`);
 
 }).then( (res) => {
 
