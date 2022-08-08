@@ -115,6 +115,7 @@ makeAGiftPromise().then( () => {
 
 // code piece - 3
 
+/*
 // Return promise object with value in Return or Resolve. 
 //  And access them in then() or catch()
 const fakeRequest = (url) => {
@@ -167,3 +168,121 @@ fakeRequest('/books').then((res) => {
 
 }); 
 
+*/
+
+
+// code piece - 4 - Chaining of Promises
+
+const bookRequest = (url) => {
+
+    return new Promise ( (resolve, reject)=> {
+        setTimeout( ()=>{
+
+            // books - data structure sample
+            const pages = {
+
+                '/about' : 'This is the about page !',
+
+                '/books' : [
+                    { id : 1, bookname : 'Mithavai'},
+                    { id : 2, bookname : 'Rubber'}
+                ],
+
+                '/books/1' : {
+                    id : 1,
+                    bookname : 'Mithavai',
+                    author : 'Nanjil',
+                    reviewId : 7
+                },
+
+                '/books/2' : {
+                    id : 2,
+                    bookname : 'Rubber',
+                    author : 'Jemo',
+                    reviewId : 8
+                },     
+                
+                '/review/7' : {
+                    content : 'This is an awesome book.'
+                }
+                
+            }
+
+            // find the data based on the url passed
+            const bookData = pages[url];
+
+            if(bookData) {
+                resolve( 
+                    // success object and page data
+                    {
+                        status   : 200, 
+                        data    : bookData 
+                    }
+                );
+            } else {
+                reject( 
+                    // return an obj representing error
+                    {
+                        status : 404
+                    }
+                );
+            }
+                     
+        }, 2000);
+    })
+};
+
+
+
+/*
+
+// pretend the data is from real api 
+
+
+// This looks similar to callback hell - promise hell.
+// call the function using a url - 
+fakeRequest('/books').then( (res) => {
+
+    const bookId = res.data[0].id;
+
+    fakeRequest(`/books/${bookId}`).then( (res) => {
+
+        console.log( res );
+
+    })
+    
+});
+
+*/
+
+// Chaining of Promises
+
+// request for book details when the initial request is fulfilled. 
+// if there is a rejection at any level, the catch() will capture 
+
+
+bookRequest('/books').then( (res) => {
+
+    console.log(`Book Name : ${res.data[0].bookname } `);
+
+    //get frst book id
+    const bookId = res.data[0].id;
+    return bookRequest(`/books/${bookId}`);
+   
+}).then( (res) => {
+
+    console.log(`Review Id : ${res.data.reviewId} `);
+
+    const reviewId = res.reviewId;
+    return bookRequest(`/review/${res.data.reviewId}`);
+
+}).then( (res) => {
+
+    const review = res.data.content;
+    console.log(`Book Review : ${review}`);
+
+}).catch( (err) => {
+    
+    console.log('Error. Please contact admin.', err);
+
+});
